@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EEF1F6"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#1E40AF"/>
+      <stop offset="1" stop-color="#0B0D10"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F4D88A"/>
+      <stop offset="1" stop-color="#C9A24B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.6">
+    <circle cx="900" cy="320" r="140" fill="none" stroke="rgba(37,99,235,0.20)" stroke-dasharray="2 6"/>
+    <circle cx="900" cy="320" r="200" fill="none" stroke="rgba(37,99,235,0.10)" stroke-dasharray="2 6"/>
+    <circle cx="900" cy="320" r="260" fill="none" stroke="rgba(37,99,235,0.06)" stroke-dasharray="2 6"/>
+  </g>
+  <circle cx="900" cy="320" r="100" fill="url(#orb)"/>
+  <text x="900" y="316" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="0.18em">TOPIC</text>
+  <text x="900" y="346" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="22" font-weight="700">US Politics</text>
+  <g>
+    <line x1="900" y1="320" x2="690" y2="200" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+    <line x1="900" y1="320" x2="690" y2="320" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="900" y1="320" x2="690" y2="440" stroke="#C9A24B" stroke-width="3" stroke-linecap="round"/>
+    <rect x="600" y="170" width="180" height="60" rx="10" fill="#FFFFFF" stroke="rgba(11,13,16,0.12)"/>
+    <text x="690" y="195" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#0B0D10">Pres winner · +7.0%</text>
+    <text x="690" y="215" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">Conf 76% · $12.4M liq</text>
+    <rect x="600" y="290" width="180" height="60" rx="10" fill="#FFFFFF" stroke="rgba(11,13,16,0.12)"/>
+    <text x="690" y="315" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#0B0D10">Senate · +5.4%</text>
+    <text x="690" y="335" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">Conf 71% · $3.8M liq</text>
+    <rect x="600" y="410" width="180" height="60" rx="10" fill="#FFFFFF" stroke="url(#gold)" stroke-width="2"/>
+    <text x="690" y="435" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#7E5E22">Apex · +14.2%</text>
+    <text x="690" y="455" text-anchor="middle" font-family="Inter" font-size="11" fill="#6B7280">Conf 82% · $4.2M liq</text>
+  </g>
+  <g transform="translate(80 90)">
+    <text font-family="Inter, sans-serif" font-size="14" letter-spacing="0.18em" font-weight="700" fill="#6B7280">QUANTZE · INTELLIGENCE TERMINAL</text>
+    <text y="80" font-family="Playfair Display, Georgia, serif" font-size="64" font-weight="700" fill="#0B0D10">Find the edge</text>
+    <text y="148" font-family="Playfair Display, Georgia, serif" font-style="italic" font-weight="500" font-size="64" fill="#2563EB">before the market does.</text>
+    <text y="200" font-family="Inter, sans-serif" font-size="18" fill="#6B7280">Polymarket · Kalshi · Sports · Crypto · Macro · AI</text>
+    <g transform="translate(0 240)">
+      <rect width="140" height="40" rx="20" fill="#0B0D10"/>
+      <text x="70" y="26" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#FFFFFF">Try the demo</text>
+      <text x="160" y="26" font-family="Inter" font-size="13" fill="#6B7280">Calibrated · audited · social</text>
+    </g>
+  </g>
+</svg>
