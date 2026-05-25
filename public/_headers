@@ -1,4 +1,0 @@
-/* SPA fallback — Cloudflare Pages serves index.html for all routes */
-/* https://developers.cloudflare.com/pages/configuration/redirects/ */
-/* All unmatched paths → /index.html (200 = rewrite, not redirect) */
-/*  /assets/* is served directly by Pages from the build output   */
