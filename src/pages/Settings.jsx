@@ -21,7 +21,7 @@ export function Settings() {
               <span key={n} className={`chip ${i < 4 ? 'cerulean' : ''} cursor-pointer`}>{n}</span>
             ))}
           </div>
-          <div className="text-[11.5px] text-slate2 mt-2">Click to toggle. Quantzy adapts the feed to your niches.</div>
+          <div className="text-[11.5px] text-slate1 mt-2">Click to toggle. Quantzy adapts the feed to your niches.</div>
         </Section>
 
         <Section title="Venues">
@@ -33,13 +33,13 @@ export function Settings() {
         </Section>
 
         <Section title="Risk mode">
-          <div className="inline-flex hairline rounded-md p-0.5 bg-platinum w-full max-w-[400px]">
+          <div className="inline-flex hairline rounded-md p-0.5 bg-onyx w-full max-w-[400px]">
             {['Cons','Bal','Aggr','Degen','Custom'].map((m) => (
               <button key={m} onClick={() => setRisk(m)}
-                className={`flex-1 text-[12px] h-8 rounded ${risk === m ? 'bg-white shadow-card text-ink font-semibold' : 'text-slate2'}`}>{m}</button>
+                className={`flex-1 text-[12px] h-8 rounded ${risk === m ? 'bg-carbon shadow-card text-white font-semibold' : 'text-slate1'}`}>{m}</button>
             ))}
           </div>
-          <div className="text-[11.5px] text-slate2 mt-2">Currently: {risk === 'Bal' ? 'Balanced — confidence ≥ 65%, max 4% per signal' : 'Custom config'}</div>
+          <div className="text-[11.5px] text-slate1 mt-2">Currently: {risk === 'Bal' ? 'Balanced — confidence ≥ 65%, max 4% per signal' : 'Custom config'}</div>
         </Section>
 
         <Section title="Bankroll & sizing">
@@ -69,7 +69,7 @@ export function Settings() {
 
 function Section({ title, children }) {
   return (
-    <div className="hairline rounded-2xl bg-white p-5">
+    <div className="hairline rounded-2xl bg-carbon p-5">
       <Eyebrow>{title}</Eyebrow>
       <div className="mt-3 space-y-3">{children}</div>
     </div>
@@ -82,11 +82,11 @@ function Toggle({ on, onChange, label, hint }) {
   return (
     <button onClick={() => onChange(!on)} className="w-full flex items-center justify-between hairline rounded-md px-3 py-2">
       <span className="text-left">
-        <span className="block text-[12.5px] text-ink">{label}</span>
-        {hint && <span className="block text-[10.5px] text-slate2">{hint}</span>}
+        <span className="block text-[12.5px] text-white">{label}</span>
+        {hint && <span className="block text-[10.5px] text-slate1">{hint}</span>}
       </span>
-      <span className={`w-9 h-5 rounded-full p-0.5 ${on ? 'bg-cerulean' : 'bg-haze'}`}>
-        <span className={`block h-4 w-4 rounded-full bg-white transition-transform ${on ? 'translate-x-4' : ''}`} />
+      <span className={`w-9 h-5 rounded-full p-0.5 ${on ? 'bg-cerulean' : 'bg-white/10'}`}>
+        <span className={`block h-4 w-4 rounded-full bg-carbon transition-transform ${on ? 'translate-x-4' : ''}`} />
       </span>
     </button>
   );

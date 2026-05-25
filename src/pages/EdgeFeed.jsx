@@ -59,7 +59,7 @@ export function EdgeFeed() {
           <h1 className="font-display text-[28px] tracking-tight">Live opportunities, ranked.</h1>
         </div>
         <div className="flex items-center gap-2">
-          <select value={topic} onChange={(e) => setTopic(e.target.value)} className="bg-white hairline rounded-md text-[12.5px] px-2 h-9">
+          <select value={topic} onChange={(e) => setTopic(e.target.value)} className="bg-carbon hairline rounded-md text-[12.5px] px-2 h-9">
             <option value="all">All topics</option>
             {TOPICS.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
           </select>
@@ -78,13 +78,13 @@ export function EdgeFeed() {
       {!loading && filtered.length > 0 && (
       <ul className="grid lg:grid-cols-2 gap-3">
         {filtered.map((s) => (
-          <li key={s.id} className={`hairline rounded-xl bg-white p-4 transition ${pulseId === s.id ? 'ring-2 ring-cerulean shadow-glow' : ''} ${s.tier === 'apex' ? 'gold-frame' : ''}`}>
+          <li key={s.id} className={`hairline rounded-xl bg-carbon p-4 transition ${pulseId === s.id ? 'ring-2 ring-cerulean shadow-glow' : ''} ${s.tier === 'apex' ? 'gold-frame' : ''}`}>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="chip">{s.venue}</span>
               <span className="chip cerulean">{s.subtopic}</span>
               {s.tier === 'apex' && <span className="chip gold"><Lock /> Apex</span>}
               {s.fade && <span className="chip red">Fade</span>}
-              <span className="ml-auto text-[10.5px] tracking-wider2 uppercase text-slate2">{s.status}</span>
+              <span className="ml-auto text-[10.5px] tracking-wider2 uppercase text-slate1">{s.status}</span>
             </div>
             <Link to={`/app/signal/${s.id}`} className="block text-[14px] font-semibold mt-2 leading-tight hover:text-cerulean">{s.market}</Link>
             <div className="grid grid-cols-[1fr_minmax(140px,160px)] gap-3 mt-3 items-center">
@@ -99,7 +99,7 @@ export function EdgeFeed() {
               <Stat k="Rules"  v={s.rulesRisk} />
               <Stat k="In"     v={s.timeLeft} />
             </div>
-            <div className="mt-2 flex items-center gap-2 text-[10.5px] text-slate2">
+            <div className="mt-2 flex items-center gap-2 text-[10.5px] text-slate1">
               <span>{s.traders.taking} taking · {s.traders.skipping} skip · {s.traders.fading} fade</span>
               <span className="ml-auto inline-flex gap-1">
                 <button className="btn btn-ghost btn-xs">Watch</button>
@@ -114,11 +114,11 @@ export function EdgeFeed() {
 
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 hairline rounded-xl bg-white shadow-lift p-3 flex items-center gap-2 z-40">
+        <div className="fixed bottom-6 right-6 hairline rounded-xl bg-carbon shadow-lift p-3 flex items-center gap-2 z-40">
           <PulseDot tone="green" />
           <div>
             <div className="text-[12px] font-semibold">Edge moved</div>
-            <div className="text-[11px] text-slate2 truncate max-w-[260px]">{toast.label} · +{toast.edge}%</div>
+            <div className="text-[11px] text-slate1 truncate max-w-[260px]">{toast.label} · +{toast.edge}%</div>
           </div>
           <Link to={`/app/signal/${toast.id}`} className="btn btn-cerulean btn-xs ml-2">Open</Link>
         </div>
@@ -127,7 +127,7 @@ export function EdgeFeed() {
   );
 }
 
-function Stat({ k, v, c = 'text-ink' }) {
+function Stat({ k, v, c = 'text-white' }) {
   return (
     <div>
       <div className="eyebrow">{k}</div>

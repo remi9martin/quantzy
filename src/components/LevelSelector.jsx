@@ -6,12 +6,12 @@ export function LevelSelector({ className = '' }) {
   return (
     <div className={`${className}`}>
       <div className="flex items-center gap-2">
-        <span className="text-[10.5px] tracking-wider2 uppercase text-slate2 font-semibold whitespace-nowrap">
+        <span className="text-[10.5px] tracking-wider2 uppercase text-slate1 font-semibold whitespace-nowrap">
           Complexity
         </span>
         <div className="relative flex items-center gap-0 w-full max-w-[260px]">
           {/* track */}
-          <div className="absolute inset-y-1/2 -translate-y-1/2 left-0 right-0 h-1 bg-mist rounded-full" />
+          <div className="absolute inset-y-1/2 -translate-y-1/2 left-0 right-0 h-1 bg-white/10 rounded-full" />
           <div
             className="absolute inset-y-1/2 -translate-y-1/2 left-0 h-1 rounded-full transition-all"
             style={{
@@ -32,7 +32,7 @@ export function LevelSelector({ className = '' }) {
                     ? 'bg-cerulean border-cerulean scale-110 shadow-glow'
                     : l.id < level
                     ? 'bg-cerulean/60 border-cerulean/60'
-                    : 'bg-white border-mist hover:border-slate1'
+                    : 'bg-graphite border-white/10 hover:border-slate1'
                 }`}
               />
             </button>

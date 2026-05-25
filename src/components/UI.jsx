@@ -10,7 +10,7 @@ export function Eyebrow({ children, className = '' }) {
 
 export function Card({ children, className = '', as: As = 'div', ...rest }) {
   return (
-    <As className={`bg-white hairline rounded-xl shadow-card ${className}`} {...rest}>
+    <As className={`bg-carbon hairline rounded-xl shadow-card ${className}`} {...rest}>
       {children}
     </As>
   );
@@ -18,7 +18,7 @@ export function Card({ children, className = '', as: As = 'div', ...rest }) {
 
 export function Panel({ children, className = '', dense = false, label = null, action = null }) {
   return (
-    <div className={`bg-white hairline rounded-xl ${dense ? 'p-3' : 'p-5'} ${className}`}>
+    <div className={`bg-carbon hairline rounded-xl ${dense ? 'p-3' : 'p-5'} ${className}`}>
       {(label || action) && (
         <div className="flex items-center justify-between mb-3">
           {label && <Eyebrow>{label}</Eyebrow>}
@@ -35,7 +35,7 @@ export function Stat({ label, value, delta, tone = 'ink', sub = null, mono = tru
     tone === 'positive' ? 'text-positive' :
     tone === 'negative' ? 'text-negative' :
     tone === 'cerulean' ? 'text-cerulean' :
-    tone === 'gold'     ? 'text-gold' : 'text-ink';
+    tone === 'gold'     ? 'text-gold' : 'text-white';
   return (
     <div>
       <div className="eyebrow">{label}</div>
@@ -47,7 +47,7 @@ export function Stat({ label, value, delta, tone = 'ink', sub = null, mono = tru
           </span>
         )}
       </div>
-      {sub && <div className="text-[11px] text-slate2 mt-0.5">{sub}</div>}
+      {sub && <div className="text-[11px] text-slate1 mt-0.5">{sub}</div>}
     </div>
   );
 }
@@ -63,7 +63,7 @@ export function PulseDot({ tone = 'cerulean', className = '' }) {
 export function ConfBand({ value, className = '' }) {
   // Probability band visualization with tick at value (0..100).
   return (
-    <div className={`relative w-full h-1.5 rounded-full bg-mist ${className}`}>
+    <div className={`relative w-full h-1.5 rounded-full bg-white/10 ${className}`}>
       <div
         className="absolute inset-y-0 left-0 rounded-full"
         style={{
@@ -72,7 +72,7 @@ export function ConfBand({ value, className = '' }) {
         }}
       />
       <div
-        className="absolute -top-1 w-px h-3.5 bg-ink"
+        className="absolute -top-1 w-px h-3.5 bg-white"
         style={{ left: `${value}%` }}
       />
     </div>
@@ -85,7 +85,7 @@ export function EdgeBar({ market, fair, className = '' }) {
   const hi = Math.max(market, fair);
   return (
     <div className={`w-full ${className}`}>
-      <div className="relative h-4 bg-mist rounded">
+      <div className="relative h-4 bg-white/10 rounded">
         <div
           className="absolute inset-y-0 rounded"
           style={{
@@ -96,10 +96,10 @@ export function EdgeBar({ market, fair, className = '' }) {
               : 'linear-gradient(90deg, rgba(226,74,74,0.18), rgba(226,74,74,0.55))',
           }}
         />
-        <div className="absolute inset-y-0 w-[2px] bg-ink" style={{ left: `${market}%` }} />
+        <div className="absolute inset-y-0 w-[2px] bg-white" style={{ left: `${market}%` }} />
         <div className="absolute inset-y-0 w-[2px] bg-cerulean" style={{ left: `${fair}%` }} />
       </div>
-      <div className="flex justify-between text-[10px] text-slate2 mt-1 tnum">
+      <div className="flex justify-between text-[10px] text-slate1 mt-1 tnum">
         <span>Mkt {market}%</span>
         <span className="text-cerulean">Fair {fair}%</span>
       </div>
@@ -146,7 +146,7 @@ export function MiniGauge({ value, label, className = '' }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <svg width="74" height="44" viewBox="0 0 74 44">
-        <path d={`M 8 38 A ${r} ${r} 0 0 1 66 38`} stroke="#E6EAF0" strokeWidth="6" fill="none" strokeLinecap="round" />
+        <path d={`M 8 38 A ${r} ${r} 0 0 1 66 38`} stroke="#262B33" strokeWidth="6" fill="none" strokeLinecap="round" />
         <path
           d={`M 8 38 A ${r} ${r} 0 0 1 66 38`}
           stroke="#2563EB"
@@ -168,22 +168,22 @@ export function MiniGauge({ value, label, className = '' }) {
 export function Divider({ label, className = '' }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <div className="flex-1 h-px bg-mist" />
+      <div className="flex-1 h-px bg-white/10" />
       {label && <span className="eyebrow">{label}</span>}
-      <div className="flex-1 h-px bg-mist" />
+      <div className="flex-1 h-px bg-white/10" />
     </div>
   );
 }
 
 export function Tabs({ value, onChange, items = [], className = '' }) {
   return (
-    <div className={`inline-flex hairline rounded-lg p-0.5 bg-platinum ${className}`}>
+    <div className={`inline-flex hairline rounded-lg p-0.5 bg-onyx ${className}`}>
       {items.map((it) => (
         <button
           key={it.value}
           onClick={() => onChange?.(it.value)}
           className={`text-[11.5px] font-semibold px-2.5 h-7 rounded-md tracking-wide ${
-            value === it.value ? 'bg-white shadow-card text-ink' : 'text-slate2 hover:text-ink'
+            value === it.value ? 'bg-carbon shadow-card text-white' : 'text-slate1 hover:text-white'
           }`}
         >
           {it.label}

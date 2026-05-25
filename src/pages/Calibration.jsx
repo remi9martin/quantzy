@@ -12,7 +12,7 @@ export function Calibration() {
         <div>
           <Eyebrow>Calibration arena</Eyebrow>
           <h1 className="font-display text-[32px] tracking-tight">Train your probabilistic intuition.</h1>
-          <p className="text-[13px] text-slate2 mt-0.5 max-w-[60ch]">Submit probabilities on unresolved markets. After resolution, you get a Brier score, accuracy by bucket, and a bias diagnosis.</p>
+          <p className="text-[13px] text-slate1 mt-0.5 max-w-[60ch]">Submit probabilities on unresolved markets. After resolution, you get a Brier score, accuracy by bucket, and a bias diagnosis.</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="chip cerulean">Streak · 6W</span>
@@ -21,25 +21,25 @@ export function Calibration() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        <div className="hairline rounded-2xl bg-white p-4">
+        <div className="hairline rounded-2xl bg-carbon p-4">
           <Eyebrow>Your calibration</Eyebrow>
           <MiniGauge value={92} label="Score" />
-          <div className="text-[11px] text-slate2 mt-1">Top 14% of users</div>
+          <div className="text-[11px] text-slate1 mt-1">Top 14% of users</div>
         </div>
-        <div className="hairline rounded-2xl bg-white p-4">
+        <div className="hairline rounded-2xl bg-carbon p-4">
           <Eyebrow>Brier · last 90d</Eyebrow>
           <div className="text-[24px] font-display tnum mt-1">0.158</div>
-          <div className="text-[11px] text-slate2">Lower = better</div>
+          <div className="text-[11px] text-slate1">Lower = better</div>
         </div>
-        <div className="hairline rounded-2xl bg-white p-4">
+        <div className="hairline rounded-2xl bg-carbon p-4">
           <Eyebrow>Bucket where you are best</Eyebrow>
           <div className="text-[16px] font-semibold mt-1">70–80%</div>
-          <div className="text-[11px] text-slate2">vs Quantzy: even</div>
+          <div className="text-[11px] text-slate1">vs Quantzy: even</div>
         </div>
-        <div className="hairline rounded-2xl bg-gradient-to-br from-[#fffaee] to-white p-4 gold-frame">
+        <div className="hairline rounded-2xl bg-gradient-to-br from-[#2A2418] to-carbon p-4 gold-frame">
           <Eyebrow className="text-[#7E5E22]">Weekly bracket</Eyebrow>
           <div className="text-[16px] font-semibold mt-1">Round of 16 · 3 wins</div>
-          <div className="text-[11px] text-slate2">Next match: @kaldera · 14:00 UTC</div>
+          <div className="text-[11px] text-slate1">Next match: @kaldera · 14:00 UTC</div>
         </div>
       </div>
 
@@ -48,10 +48,10 @@ export function Calibration() {
           const v = picks[s.id] ?? 50;
           const diff = Math.abs(v - s.fairPct);
           return (
-            <div key={s.id} className="hairline rounded-2xl bg-white p-4">
+            <div key={s.id} className="hairline rounded-2xl bg-carbon p-4">
               <div className="flex items-center justify-between">
                 <span className="chip">{s.subtopic}</span>
-                <span className="text-[10.5px] text-slate2">{s.timeLeft}</span>
+                <span className="text-[10.5px] text-slate1">{s.timeLeft}</span>
               </div>
               <div className="text-[14px] font-semibold mt-1.5 leading-tight">{s.market}</div>
               <div className="mt-3 grid grid-cols-3 gap-2 text-center text-[11px]">
@@ -65,7 +65,7 @@ export function Calibration() {
               <div className="mt-2 flex items-center gap-1.5">
                 <button className="btn btn-cerulean btn-xs">Lock</button>
                 <button className="btn btn-ghost btn-xs">Skip</button>
-                <span className="ml-auto text-[10.5px] text-slate2">Δ vs model {diff.toFixed(1)}</span>
+                <span className="ml-auto text-[10.5px] text-slate1">Δ vs model {diff.toFixed(1)}</span>
               </div>
             </div>
           );

@@ -26,13 +26,13 @@ export function Vault() {
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {REPORTS.map((r, i) => (
-          <article key={i} className={`hairline rounded-2xl bg-white p-4 ${r.tier === 'apex' ? 'gold-frame' : ''}`}>
+          <article key={i} className={`hairline rounded-2xl bg-carbon p-4 ${r.tier === 'apex' ? 'gold-frame' : ''}`}>
             <div className="flex items-center justify-between">
               <span className="chip cerulean">{r.cat}</span>
               {r.tier === 'apex' ? <span className="chip gold"><Lock /> Apex</span> : <span className="chip">Standard</span>}
             </div>
             <h3 className="font-display text-[18px] mt-2 leading-snug">{r.title}</h3>
-            <div className="text-[11px] text-slate2 mt-2">{r.date} · {r.read} read</div>
+            <div className="text-[11px] text-slate1 mt-2">{r.date} · {r.read} read</div>
             <button className="btn btn-ghost btn-sm w-full mt-3">Open report →</button>
           </article>
         ))}

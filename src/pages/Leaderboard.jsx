@@ -21,14 +21,14 @@ export function Leaderboard() {
         <div>
           <Eyebrow>League · Season 04</Eyebrow>
           <h1 className="font-display text-[32px] tracking-tight leading-tight">Leaderboard.</h1>
-          <p className="text-[13px] text-slate2 mt-0.5">Multi-dimensional rank: ROI, calibration, hit rate, sample size, drawdown control, niche specialization.</p>
+          <p className="text-[13px] text-slate1 mt-0.5">Multi-dimensional rank: ROI, calibration, hit rate, sample size, drawdown control, niche specialization.</p>
         </div>
         <Tabs value={mode} onChange={setMode} items={MODES} />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {sorted.slice(0, 4).map((t, i) => (
-          <div key={t.name} className={`hairline rounded-2xl p-4 ${i === 0 ? 'gold-frame bg-gradient-to-br from-[#fffaee] to-white' : 'bg-white'} relative overflow-hidden`}>
+          <div key={t.name} className={`hairline rounded-2xl p-4 ${i === 0 ? 'gold-frame bg-gradient-to-br from-[#2A2418] to-carbon' : 'bg-carbon'} relative overflow-hidden`}>
             <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: ['#C9A24B', '#9CA3AF', '#B16A2D', '#374151'][i] }} />
             <div className="flex items-center justify-between">
               <span className="chip">{['1st', '2nd', '3rd', '4th'][i]}</span>
@@ -38,7 +38,7 @@ export function Leaderboard() {
               <div className="h-10 w-10 rounded-full bg-ink text-white grid place-items-center text-[12px] font-semibold">{t.name.slice(0,2).toUpperCase()}</div>
               <div className="min-w-0">
                 <div className="font-semibold truncate">@{t.name}</div>
-                <div className="text-[10.5px] text-slate2">{t.specialty}</div>
+                <div className="text-[10.5px] text-slate1">{t.specialty}</div>
               </div>
             </div>
             <div className="mt-2">
@@ -53,19 +53,19 @@ export function Leaderboard() {
         ))}
       </div>
 
-      <div className="hairline rounded-2xl bg-white">
+      <div className="hairline rounded-2xl bg-carbon">
         <table className="w-full text-[12.5px]">
-          <thead className="text-slate2">
+          <thead className="text-slate1">
             <tr><th className="py-2 px-4 text-left">#</th><th className="text-left">Trader</th><th>Specialty</th><th>ROI</th><th>Hit</th><th>Cal</th><th>Brier</th><th>Samples</th><th>Streak</th><th>DD</th><th>Tier</th><th className="pr-4"></th></tr>
           </thead>
           <tbody>
             {sorted.map((t, i) => (
-              <tr key={t.name} className="border-t border-mist hover:bg-platinum/40">
-                <td className="py-2 px-4 tnum text-slate2">{i + 1}</td>
+              <tr key={t.name} className="border-t border-white/10 hover:bg-white/5">
+                <td className="py-2 px-4 tnum text-slate1">{i + 1}</td>
                 <td>
                   <Link to={`/app/trader/${t.name}`} className="font-semibold hover:text-cerulean">@{t.name}</Link>
                 </td>
-                <td className="text-slate2">{t.specialty}</td>
+                <td className="text-slate1">{t.specialty}</td>
                 <td className="tnum text-positive">+{t.roi}%</td>
                 <td className="tnum">{t.hit}%</td>
                 <td className="tnum">{t.calib}</td>
@@ -81,7 +81,7 @@ export function Leaderboard() {
         </table>
       </div>
 
-      <div className="hairline rounded-2xl bg-white p-5">
+      <div className="hairline rounded-2xl bg-carbon p-5">
         <Eyebrow>Season prizes</Eyebrow>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
           {[
@@ -90,7 +90,7 @@ export function Leaderboard() {
             { k: 'Niche specialist', v: 'Verified curator', c: 'text-positive' },
             { k: 'Best calibrator', v: 'Featured profile', c: 'text-cerulean' },
           ].map((p) => (
-            <div key={p.k} className="hairline rounded-md p-3 bg-platinum/30">
+            <div key={p.k} className="hairline rounded-md p-3 bg-white/5">
               <div className="eyebrow">{p.k}</div>
               <div className={`font-semibold mt-0.5 ${p.c}`}>{p.v}</div>
             </div>

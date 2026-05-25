@@ -35,24 +35,24 @@ export function AIAnalyst() {
       </div>
 
       <div className="grid lg:grid-cols-[1fr_280px] gap-5">
-        <div className="hairline rounded-2xl bg-white flex flex-col" style={{ minHeight: '60vh' }}>
-          <div className="p-3 border-b border-mist flex items-center gap-2">
+        <div className="hairline rounded-2xl bg-carbon flex flex-col" style={{ minHeight: '60vh' }}>
+          <div className="p-3 border-b border-white/10 flex items-center gap-2">
             <MascotMark size={26} />
             <div>
               <div className="text-[13px] font-semibold">Quantzy Analyst</div>
-              <div className="text-[10.5px] text-slate2">model q-04.7-c · live data</div>
+              <div className="text-[10.5px] text-slate1">model q-04.7-c · live data</div>
             </div>
             <span className="ml-auto chip cerulean">Online</span>
           </div>
 
           <div className="flex-1 p-4 space-y-3 overflow-auto">
             {chat.map((m, i) => m.who === 'u' ? (
-              <div key={i} className="ml-auto max-w-[70%] hairline rounded-2xl rounded-br-sm bg-cerulean/8 px-3 py-2 text-[13px]">{m.text}</div>
+              <div key={i} className="ml-auto max-w-[70%] hairline rounded-2xl rounded-br-sm bg-cerulean/15 px-3 py-2 text-[13px]">{m.text}</div>
             ) : (
               <div key={i} className="max-w-[80%]">
-                <div className="hairline rounded-2xl rounded-bl-sm bg-white px-3 py-2 text-[13px] shadow-card">{m.text}</div>
+                <div className="hairline rounded-2xl rounded-bl-sm bg-carbon px-3 py-2 text-[13px] shadow-card">{m.text}</div>
                 {m.card && (
-                  <div className="hairline rounded-xl bg-white p-3 mt-2 max-w-[440px]">
+                  <div className="hairline rounded-xl bg-carbon p-3 mt-2 max-w-[440px]">
                     <div className="flex items-center justify-between"><span className="chip">{m.card.venue}</span><span className="chip cerulean">+{m.card.edgePct}% edge</span></div>
                     <div className="text-[13px] font-semibold mt-1">{m.card.market}</div>
                     <div className="mt-2"><EdgeBar market={m.card.marketPct} fair={m.card.fairPct} /></div>
@@ -64,32 +64,32 @@ export function AIAnalyst() {
             ))}
           </div>
 
-          <div className="p-3 border-t border-mist flex items-center gap-2">
+          <div className="p-3 border-t border-white/10 flex items-center gap-2">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && send(input)}
               placeholder="Ask Quantzy…"
-              className="flex-1 bg-platinum/40 hairline rounded-md px-3 h-10 text-[13px] outline-none"
+              className="flex-1 bg-white/5 hairline rounded-md px-3 h-10 text-[13px] outline-none"
             />
             <button onClick={() => send(input)} className="btn btn-cerulean btn-sm">Send</button>
           </div>
         </div>
 
         <aside className="space-y-3">
-          <div className="hairline rounded-2xl bg-white p-4">
+          <div className="hairline rounded-2xl bg-carbon p-4">
             <Eyebrow>Try asking</Eyebrow>
             <ul className="mt-2 space-y-1">
               {PROMPTS.map((p) => (
                 <li key={p}>
-                  <button onClick={() => send(p)} className="w-full text-left hairline rounded-md px-2.5 py-1.5 text-[12px] hover:bg-platinum/40">{p}</button>
+                  <button onClick={() => send(p)} className="w-full text-left hairline rounded-md px-2.5 py-1.5 text-[12px] hover:bg-white/5">{p}</button>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="hairline rounded-2xl bg-platinum/40 p-4">
+          <div className="hairline rounded-2xl bg-white/5 p-4">
             <Eyebrow>Personalization</Eyebrow>
-            <ul className="text-[12px] mt-2 space-y-1 text-slate2">
+            <ul className="text-[12px] mt-2 space-y-1 text-slate1">
               <li>Niches: NBA, Politics, AI, Crypto</li>
               <li>Risk: Balanced</li>
               <li>Conf floor: 65%</li>

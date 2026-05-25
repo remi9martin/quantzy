@@ -4,11 +4,11 @@ import { Eyebrow } from '../components/UI.jsx';
 
 export function Methodology() {
   return (
-    <div className="surface-paper min-h-screen">
-      <header className="border-b border-mist">
+    <div className="bg-obsidian min-h-screen">
+      <header className="border-b border-white/10">
         <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center gap-4">
           <Link to="/" className="flex items-center gap-2"><Logo size={20} /></Link>
-          <Link to="/pricing" className="ml-auto text-[13px] text-slate2 hover:text-ink">Pricing</Link>
+          <Link to="/pricing" className="ml-auto text-[13px] text-slate1 hover:text-white">Pricing</Link>
           <Link to="/app" className="btn btn-primary btn-sm">Enter app</Link>
         </div>
       </header>
@@ -17,7 +17,7 @@ export function Methodology() {
         <div>
           <Eyebrow>Methodology</Eyebrow>
           <h1 className="font-display text-[44px] leading-tight tracking-tight mt-2">How Quantzy prices reality.</h1>
-          <p className="text-[14px] text-slate2 mt-3">Quantzy runs an event-market intelligence stack: data ingestion across venues, market normalization, a multi-component probability model, calibration audit, social weighting, and a missed-win recovery loop. We publish what we can without giving away the production fingerprint.</p>
+          <p className="text-[14px] text-slate1 mt-3">Quantzy runs an event-market intelligence stack: data ingestion across venues, market normalization, a multi-component probability model, calibration audit, social weighting, and a missed-win recovery loop. We publish what we can without giving away the production fingerprint.</p>
         </div>
 
         <Section title="1 · Data ingestion">
@@ -52,7 +52,7 @@ function Section({ title, children }) {
   return (
     <section>
       <h2 className="font-display text-[26px] tracking-tight mb-2">{title}</h2>
-      <div className="text-[14px] text-ink leading-relaxed">{children}</div>
+      <div className="text-[14px] text-white leading-relaxed">{children}</div>
     </section>
   );
 }

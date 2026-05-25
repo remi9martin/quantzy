@@ -26,21 +26,21 @@ const APP_NAV = [
 
 function StatusBar() {
   return (
-    <div className="hidden md:flex items-center gap-5 px-4 h-8 text-[10.5px] tracking-wider2 uppercase text-slate2 surface-platinum hairline border-x-0 border-t-0">
+    <div className="hidden md:flex items-center gap-5 px-4 h-8 text-[10.5px] tracking-wider2 uppercase text-slate1 bg-onyx hairline border-x-0 border-t-0">
       <span className="inline-flex items-center gap-2">
         <PulseDot tone="green" />
         <span>Markets sync · live</span>
       </span>
       <span>Active edge <span className="text-positive font-semibold tnum">+7.38%</span></span>
-      <span>Hit rate <span className="text-ink font-semibold tnum">78.3%</span></span>
-      <span>Open opps <span className="text-ink font-semibold tnum">23</span></span>
-      <span>Markets <span className="text-ink font-semibold tnum">2,841</span></span>
+      <span>Hit rate <span className="text-white font-semibold tnum">78.3%</span></span>
+      <span>Open opps <span className="text-white font-semibold tnum">23</span></span>
+      <span>Markets <span className="text-white font-semibold tnum">2,841</span></span>
       <span>Missed wins <span className="text-warn font-semibold tnum">6</span></span>
       <span className="ml-auto inline-flex items-center gap-2">
         <span>League rank</span>
         <span className="chip cerulean">Silver II · #412</span>
-        <span className="text-slate2">Followed traders</span>
-        <span className="font-semibold text-ink tnum">8 active</span>
+        <span className="text-slate1">Followed traders</span>
+        <span className="font-semibold text-white tnum">8 active</span>
       </span>
     </div>
   );
@@ -50,11 +50,11 @@ function TopNav({ onOpenMenu }) {
   const { level } = useLevel();
   const visibleNav = APP_NAV.filter((n) => n.minLevel <= level);
   return (
-    <header className="sticky top-0 z-30 surface-paper border-b border-mist">
+    <header className="sticky top-0 z-30 bg-carbon border-b border-white/10">
       <div className="flex items-center gap-3 px-4 h-14">
         <button
           onClick={onOpenMenu}
-          className="lg:hidden h-9 w-9 -ml-1 rounded-md hairline bg-white inline-flex items-center justify-center"
+          className="lg:hidden h-9 w-9 -ml-1 rounded-md hairline bg-carbon inline-flex items-center justify-center text-white"
           aria-label="Open menu"
         >
           <svg viewBox="0 0 16 16" width="16" height="16"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
@@ -72,8 +72,8 @@ function TopNav({ onOpenMenu }) {
               className={({ isActive }) =>
                 `px-2.5 h-8 inline-flex items-center text-[12px] font-medium rounded-md ${
                   isActive
-                    ? 'bg-ink text-white'
-                    : 'text-slate2 hover:text-ink hover:bg-mist'
+                    ? 'bg-cerulean text-white'
+                    : 'text-slate1 hover:text-white hover:bg-white/10'
                 }`
               }
             >
@@ -84,7 +84,7 @@ function TopNav({ onOpenMenu }) {
 
         <div className="ml-auto flex items-center gap-3">
           <LevelSelector className="hidden lg:block" />
-          <div className="hidden md:flex items-center h-9 px-3 rounded-md bg-platinum hairline text-[12px] text-slate2 w-60">
+          <div className="hidden md:flex items-center h-9 px-3 rounded-md bg-white/5 hairline text-[12px] text-slate1 w-60">
             <svg viewBox="0 0 16 16" width="14" height="14" className="text-slate1 mr-2"><path d="M11 11l3 3m-2-7a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z" fill="none" stroke="currentColor" strokeWidth="1.5"/></svg>
             <span>Search…</span>
             <span className="ml-auto text-[10px] tracking-wider2 uppercase text-slate1">⌘K</span>
@@ -92,7 +92,7 @@ function TopNav({ onOpenMenu }) {
           <Link to="/app/tiers" className="btn btn-gold btn-sm hidden md:inline-flex">
             Upgrade
           </Link>
-          <button className="h-9 w-9 rounded-md hairline bg-white inline-flex items-center justify-center" aria-label="Notifications">
+          <button className="h-9 w-9 rounded-md hairline bg-carbon text-white inline-flex items-center justify-center" aria-label="Notifications">
             <svg viewBox="0 0 16 16" width="15" height="15"><path d="M8 1.5a4 4 0 0 0-4 4v3.4l-1.3 1.7a.5.5 0 0 0 .4.8h9.8a.5.5 0 0 0 .4-.8L12 8.9V5.5a4 4 0 0 0-4-4ZM6.5 13a1.5 1.5 0 0 0 3 0h-3Z" fill="currentColor" /></svg>
           </button>
           <Link to="/app/settings" className="h-9 w-9 rounded-full bg-ink text-white inline-flex items-center justify-center text-[11px] font-semibold relative">
@@ -123,7 +123,7 @@ function LeftRail() {
     { name: 'macroprint', tier: 'Platinum', pl: '+7.1%' },
   ];
   return (
-    <aside className="hidden xl:block w-60 shrink-0 border-r border-mist bg-white/40 backdrop-blur-sm">
+    <aside className="hidden xl:block w-60 shrink-0 border-r border-white/10 bg-onyx backdrop-blur-sm">
       <div className="px-4 py-4 space-y-5 sticky top-[88px]">
         <div>
           <div className="eyebrow mb-2">My Niches</div>
@@ -132,9 +132,9 @@ function LeftRail() {
               <li key={n.label} className="flex items-center justify-between text-[12px]">
                 <span className="inline-flex items-center gap-2">
                   {n.hot && <span className="pulse-dot" />}
-                  <span className="text-ink">{n.label}</span>
+                  <span className="text-white">{n.label}</span>
                 </span>
-                <span className="tnum text-slate2">{n.count}</span>
+                <span className="tnum text-slate1">{n.count}</span>
               </li>
             ))}
           </ul>
@@ -147,7 +147,7 @@ function LeftRail() {
             <li className="flex items-center justify-between"><span>NBA · totals · &lt; 24h</span><span className="text-positive tnum">+8.2%</span></li>
             <li className="flex items-center justify-between"><span>Politics · clean rules</span><span className="text-positive tnum">+5.4%</span></li>
             <li className="flex items-center justify-between"><span>AI · catalyst &lt; 7d</span><span className="text-positive tnum">+11.1%</span></li>
-            <li className="flex items-center justify-between"><span>Macro · CPI window</span><span className="text-slate2 tnum">+0.8%</span></li>
+            <li className="flex items-center justify-between"><span>Macro · CPI window</span><span className="text-slate1 tnum">+0.8%</span></li>
           </ul>
         </div>
 
@@ -157,7 +157,7 @@ function LeftRail() {
             {traders.map((t) => (
               <li key={t.name} className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-5 w-5 rounded-full bg-mist text-[9px] inline-flex items-center justify-center font-semibold uppercase">{t.name.slice(0,2)}</span>
+                  <span className="h-5 w-5 rounded-full bg-white/10 text-[9px] inline-flex items-center justify-center font-semibold uppercase text-white">{t.name.slice(0,2)}</span>
                   <span>@{t.name}</span>
                 </span>
                 <span className="text-positive tnum text-[11px]">{t.pl}</span>
@@ -168,9 +168,9 @@ function LeftRail() {
 
         <div>
           <div className="eyebrow mb-2">Risk Mode</div>
-          <div className="inline-flex hairline rounded-md p-0.5 bg-platinum w-full">
+          <div className="inline-flex hairline rounded-md p-0.5 bg-white/5 w-full">
             {['Cons.','Bal.','Aggr.','Degen'].map((m, i) => (
-              <button key={m} className={`flex-1 text-[11px] h-7 rounded ${i === 1 ? 'bg-white shadow-card text-ink font-semibold' : 'text-slate2'}`}>{m}</button>
+              <button key={m} className={`flex-1 text-[11px] h-7 rounded ${i === 1 ? 'bg-carbon shadow-card text-white font-semibold' : 'text-slate1'}`}>{m}</button>
             ))}
           </div>
           <div className="mt-2 flex gap-1.5">
@@ -181,12 +181,12 @@ function LeftRail() {
           </div>
         </div>
 
-        <div className="rounded-lg gold-frame bg-gradient-to-br from-[#fff8e8] to-[#fff] p-3">
+        <div className="rounded-lg gold-frame bg-gradient-to-br from-[#2a2010] to-[#1A1D24] p-3">
           <div className="flex items-center gap-2">
             <QBadge size={20} />
-            <div className="eyebrow text-[#7E5E22]">Apex tier</div>
+            <div className="eyebrow text-gold">Apex tier</div>
           </div>
-          <p className="text-[11.5px] mt-1 text-ink leading-snug">
+          <p className="text-[11.5px] mt-1 text-platinum leading-snug">
             3 hidden premium branches in your niches today.
           </p>
           <Link to="/app/tiers" className="btn btn-gold btn-xs mt-2 w-full">Unlock</Link>
@@ -203,7 +203,7 @@ export function AppShell() {
   // Scanner page uses its own rail layout, so we suppress the LeftRail there.
   const fullBleed = location.pathname.startsWith('/app/scanner');
   return (
-    <div className="min-h-screen flex flex-col surface-paper">
+    <div className="min-h-screen flex flex-col bg-obsidian">
       <TopNav onOpenMenu={() => setMenuOpen(true)} />
       <div className="flex-1 flex">
         {!fullBleed && <LeftRail />}
@@ -223,7 +223,7 @@ export function AppShell() {
                 to={n.to}
                 end={n.end}
                 onClick={() => setMenuOpen(false)}
-                className="block hairline rounded-md px-3 py-2.5 text-[13px] font-medium hover:bg-platinum"
+                className="block hairline rounded-md px-3 py-2.5 text-[13px] font-medium text-white hover:bg-white/10"
               >
                 {n.label}
               </NavLink>

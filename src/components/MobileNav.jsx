@@ -9,7 +9,7 @@ const MOBILE_NAV = [
 ];
 
 function Icon({ name, active }) {
-  const stroke = active ? '#0B0D10' : '#6B7280';
+  const stroke = active ? '#FFFFFF' : '#9CA3AF';
   switch (name) {
     case 'home': return (
       <svg viewBox="0 0 20 20" width="20" height="20"><path d="M3 9.5 10 4l7 5.5V16a1 1 0 0 1-1 1h-3v-5H9v5H4a1 1 0 0 1-1-1V9.5Z" fill="none" stroke={stroke} strokeWidth="1.6" strokeLinejoin="round" /></svg>
@@ -32,7 +32,7 @@ function Icon({ name, active }) {
 
 export function MobileBottomNav() {
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/92 backdrop-blur-md border-t border-mist" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-carbon/92 backdrop-blur-md border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
       <ul className="grid grid-cols-5 h-14">
         {MOBILE_NAV.map((n) => (
           <li key={n.to}>
@@ -44,7 +44,7 @@ export function MobileBottomNav() {
               {({ isActive }) => (
                 <>
                   <Icon name={n.icon} active={isActive} />
-                  <span className={`text-[10px] tracking-wide ${isActive ? 'text-ink font-semibold' : 'text-slate2'}`}>{n.label}</span>
+                  <span className={`text-[10px] tracking-wide ${isActive ? 'text-white font-semibold' : 'text-slate1'}`}>{n.label}</span>
                 </>
               )}
             </NavLink>
@@ -65,12 +65,12 @@ export function Drawer({ open, onClose, title, children }) {
       <div
         role="dialog"
         aria-modal="true"
-        className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lift max-h-[88vh] overflow-y-auto"
+        className="absolute bottom-0 left-0 right-0 bg-carbon rounded-t-2xl shadow-lift max-h-[88vh] overflow-y-auto"
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
       >
-        <div className="sticky top-0 bg-white/95 backdrop-blur border-b border-mist px-4 py-3 flex items-center gap-2">
-          <span className="block h-1 w-10 bg-mist rounded-full mx-auto absolute left-1/2 -translate-x-1/2 -top-2" />
-          <div className="text-[13px] font-semibold">{title}</div>
+        <div className="sticky top-0 bg-carbon/95 backdrop-blur border-b border-white/10 px-4 py-3 flex items-center gap-2">
+          <span className="block h-1 w-10 bg-white/10 rounded-full mx-auto absolute left-1/2 -translate-x-1/2 -top-2" />
+          <div className="text-[13px] font-semibold text-white">{title}</div>
           <button onClick={onClose} className="ml-auto btn btn-ghost btn-xs">Close</button>
         </div>
         <div className="p-4">{children}</div>

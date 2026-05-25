@@ -10,10 +10,10 @@ import { useMemo, useState } from 'react';
 /* -------------------------------------------------------------------------- */
 
 function Kpi({ label, value, delta, tone = 'ink', spark, sub }) {
-  const c = tone === 'positive' ? 'text-positive' : tone === 'negative' ? 'text-negative' : tone === 'cerulean' ? 'text-cerulean' : tone === 'gold' ? 'text-[#7E5E22]' : 'text-ink';
+  const c = tone === 'positive' ? 'text-positive' : tone === 'negative' ? 'text-negative' : tone === 'cerulean' ? 'text-cerulean' : tone === 'gold' ? 'text-[#7E5E22]' : 'text-white';
   const sc = tone === 'positive' ? '#10B981' : tone === 'negative' ? '#E24A4A' : tone === 'gold' ? '#C9A24B' : '#2563EB';
   return (
-    <div className="hairline rounded-xl bg-white p-3.5 hover:shadow-card transition relative overflow-hidden">
+    <div className="hairline rounded-xl bg-carbon p-3.5 hover:shadow-card transition relative overflow-hidden">
       <div className="flex items-center justify-between">
         <div className="eyebrow">{label}</div>
         {delta && (
@@ -21,7 +21,7 @@ function Kpi({ label, value, delta, tone = 'ink', spark, sub }) {
         )}
       </div>
       <div className={`mt-1 text-[22px] font-semibold tnum ${c}`}>{value}</div>
-      {sub && <div className="text-[11px] text-slate2">{sub}</div>}
+      {sub && <div className="text-[11px] text-slate1">{sub}</div>}
       {spark && (
         <div className="mt-1.5 -mx-1">
           <Sparkline values={spark} width={220} height={26} color={sc} />
@@ -54,7 +54,7 @@ function KpiStrip() {
 function PriorityRail() {
   const top = SIGNALS.slice(0, 3);
   return (
-    <div className="hairline rounded-2xl bg-white p-4">
+    <div className="hairline rounded-2xl bg-carbon p-4">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Eyebrow>Priority · act now</Eyebrow>
@@ -78,7 +78,7 @@ function PriorityRail() {
               <div><div className="eyebrow">Liq</div><div className="font-semibold tnum">{s.liquidity}</div></div>
               <div><div className="eyebrow">In</div><div className="font-semibold tnum">{s.timeLeft}</div></div>
             </div>
-            <div className="mt-2 flex items-center gap-1 text-[10.5px] text-slate2">
+            <div className="mt-2 flex items-center gap-1 text-[10.5px] text-slate1">
               <span>{s.traders.taking} taking</span>·<span>{s.traders.skipping} skip</span>·<span>{s.traders.fading} fade</span>
               <span className="ml-auto inline-flex gap-2">
                 <button className="btn btn-ghost btn-xs">Watch</button>
@@ -130,8 +130,8 @@ function EdgeFeedInline() {
   }, []);
 
   return (
-    <div className="hairline rounded-2xl bg-white">
-      <div className="flex items-center justify-between p-3 border-b border-mist">
+    <div className="hairline rounded-2xl bg-carbon">
+      <div className="flex items-center justify-between p-3 border-b border-white/10">
         <div className="flex items-center gap-2">
           <Eyebrow>Edge feed</Eyebrow>
           <Tabs value={sort} onChange={setSort} items={SORTS} />
@@ -142,9 +142,9 @@ function EdgeFeedInline() {
           <Link to="/app/feed" className="btn btn-ghost btn-xs">Open feed →</Link>
         </div>
       </div>
-      <ul className="divide-y divide-mist">
+      <ul className="divide-y divide-white/10">
         {sorted.map((s) => (
-          <li key={s.id} className={`p-3 grid grid-cols-[minmax(220px,2.4fr)_minmax(140px,1.4fr)_repeat(5,minmax(70px,1fr))_auto] items-center gap-3 hover:bg-platinum/40 transition ${pulseId === s.id ? 'ring-1 ring-cerulean/40 bg-cerulean/5' : ''}`}>
+          <li key={s.id} className={`p-3 grid grid-cols-[minmax(220px,2.4fr)_minmax(140px,1.4fr)_repeat(5,minmax(70px,1fr))_auto] items-center gap-3 hover:bg-white/5 transition ${pulseId === s.id ? 'ring-1 ring-cerulean/40 bg-cerulean/15' : ''}`}>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="chip">{s.venue}</span>
@@ -152,7 +152,7 @@ function EdgeFeedInline() {
                 {s.fade && <span className="chip red">Fade</span>}
               </div>
               <Link to={`/app/signal/${s.id}`} className="text-[13px] font-semibold mt-1 leading-tight block hover:text-cerulean">{s.market}</Link>
-              <div className="text-[10.5px] text-slate2 mt-0.5">{s.subtopic} · catalyst {s.catalyst}</div>
+              <div className="text-[10.5px] text-slate1 mt-0.5">{s.subtopic} · catalyst {s.catalyst}</div>
             </div>
             <EdgeBar market={s.marketPct} fair={s.fairPct} />
             <Cell label="Edge" value={`+${s.edgePct}%`} tone="positive" />
@@ -172,7 +172,7 @@ function EdgeFeedInline() {
 }
 
 function Cell({ label, value, tone = 'ink' }) {
-  const c = tone === 'positive' ? 'text-positive' : tone === 'cerulean' ? 'text-cerulean' : 'text-ink';
+  const c = tone === 'positive' ? 'text-positive' : tone === 'cerulean' ? 'text-cerulean' : 'text-white';
   return (
     <div className="text-[11.5px]">
       <div className="eyebrow">{label}</div>
@@ -187,26 +187,26 @@ function Cell({ label, value, tone = 'ink' }) {
 
 function AIAnalystSticky() {
   return (
-    <aside className="hairline rounded-2xl bg-gradient-to-b from-white to-platinum/40 p-4 sticky top-[100px]">
+    <aside className="hairline rounded-2xl bg-gradient-to-b from-carbon to-white/5 p-4 sticky top-[100px]">
       <div className="flex items-center gap-2.5">
         <MascotMark size={26} />
         <div>
           <div className="text-[13px] font-semibold">Quantzy Analyst</div>
-          <div className="text-[10.5px] text-slate2">Tuesday · 14:02 UTC</div>
+          <div className="text-[10.5px] text-slate1">Tuesday · 14:02 UTC</div>
         </div>
         <span className="ml-auto chip cerulean"><PulseDot /> Live</span>
       </div>
-      <div className="mt-3 text-[12.5px] leading-relaxed text-ink">
+      <div className="mt-3 text-[12.5px] leading-relaxed text-white">
         <p>Your best opportunity today is in <span className="font-semibold">NBA totals</span>, not politics.</p>
         <p className="mt-2">Your watchlist shows 4 markets with &gt;8% edge but only 2 have sufficient liquidity. Top trader consensus favors <span className="font-semibold">OKC G5 winner</span> with composite conviction +9pp.</p>
-        <p className="mt-2 text-slate2">Macro is overbought on June-cut probability — fade signal forming. CPI window in 9 days.</p>
+        <p className="mt-2 text-slate1">Macro is overbought on June-cut probability — fade signal forming. CPI window in 9 days.</p>
       </div>
       <div className="mt-3 grid gap-1.5">
         <button className="btn btn-cerulean btn-sm w-full justify-between">Review top 3 <Arrow size={12} /></button>
         <button className="btn btn-ghost btn-sm w-full justify-between">Why not politics?</button>
         <button className="btn btn-ghost btn-sm w-full justify-between">Where am I overconfident?</button>
       </div>
-      <div className="mt-3 hairline rounded-md p-2 bg-white">
+      <div className="mt-3 hairline rounded-md p-2 bg-carbon">
         <div className="eyebrow">Ask Quantzy</div>
         <div className="mt-1 flex items-center gap-2">
           <input className="flex-1 bg-transparent text-[12px] outline-none placeholder-slate1" placeholder="What am I missing in NBA props?" />
@@ -223,7 +223,7 @@ function AIAnalystSticky() {
 
 function Calendar() {
   return (
-    <div className="hairline rounded-2xl bg-white p-4">
+    <div className="hairline rounded-2xl bg-carbon p-4">
       <div className="flex items-center justify-between mb-3">
         <Eyebrow>Catalyst calendar</Eyebrow>
         <span className="chip">Next 7d</span>
@@ -231,7 +231,7 @@ function Calendar() {
       <ul className="space-y-1.5">
         {CATALYSTS.map((c, i) => (
           <li key={i} className="grid grid-cols-[110px_minmax(0,1fr)_auto] items-center gap-3 text-[12px]">
-            <span className="text-slate2 tnum">{c.when}</span>
+            <span className="text-slate1 tnum">{c.when}</span>
             <span className="font-medium truncate">{c.label}</span>
             <span className={`chip ${c.impact === 'High' ? 'red' : c.impact === 'Med' ? 'cerulean' : ''}`}>{c.impact} · {c.markets}</span>
           </li>
@@ -243,13 +243,13 @@ function Calendar() {
 
 function MissedTeaser() {
   return (
-    <div className="hairline rounded-2xl bg-gradient-to-br from-[#fff7ec] via-white to-white p-4 relative overflow-hidden">
+    <div className="hairline rounded-2xl bg-gradient-to-br from-[#2A2418] via-carbon to-carbon p-4 relative overflow-hidden">
       <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full" style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.18), transparent 70%)' }} />
       <div className="flex items-center justify-between">
         <Eyebrow>You almost had this</Eyebrow>
         <Link to="/app/missed" className="text-[12px] text-cerulean font-semibold">Open ledger →</Link>
       </div>
-      <div className="text-[24px] font-display mt-1">$5,492 <span className="text-[12px] text-slate2 font-sans">missed edge · 30d</span></div>
+      <div className="text-[24px] font-display mt-1">$5,492 <span className="text-[12px] text-slate1 font-sans">missed edge · 30d</span></div>
       <ul className="mt-2 space-y-1.5">
         {MISSED.slice(0, 3).map((m) => (
           <li key={m.id} className="flex items-center gap-2 text-[12px]">
@@ -260,8 +260,8 @@ function MissedTeaser() {
           </li>
         ))}
       </ul>
-      <div className="mt-3 hairline rounded-md p-2 bg-white">
-        <div className="text-[11.5px] text-slate2">Pattern diagnosis: <span className="text-ink font-semibold">you skip 60–70% confidence even when edge is high.</span></div>
+      <div className="mt-3 hairline rounded-md p-2 bg-carbon">
+        <div className="text-[11.5px] text-slate1">Pattern diagnosis: <span className="text-white font-semibold">you skip 60–70% confidence even when edge is high.</span></div>
         <div className="mt-1 flex items-center gap-1.5">
           <button className="btn btn-ghost btn-xs">Lower conf floor</button>
           <button className="btn btn-ghost btn-xs">Set alert</button>
@@ -274,7 +274,7 @@ function MissedTeaser() {
 function CategoryHeat() {
   const max = Math.max(...CATEGORIES.map((c) => c.edge));
   return (
-    <div className="hairline rounded-2xl bg-white p-4">
+    <div className="hairline rounded-2xl bg-carbon p-4">
       <div className="flex items-center justify-between mb-3">
         <Eyebrow>Category heat</Eyebrow>
         <span className="chip cerulean">Edge × hit rate</span>
@@ -283,10 +283,10 @@ function CategoryHeat() {
         {CATEGORIES.map((c) => (
           <li key={c.topic} className="grid grid-cols-[100px_minmax(0,1fr)_auto] items-center gap-3 text-[12px]">
             <span className="font-medium">{c.topic}</span>
-            <div className="h-1.5 rounded bg-mist relative">
+            <div className="h-1.5 rounded bg-white/10 relative">
               <div className="h-1.5 rounded" style={{ width: `${(c.edge / max) * 100}%`, background: c.color }} />
             </div>
-            <span className="tnum text-slate2">+{c.edge}% · {c.hit}%</span>
+            <span className="tnum text-slate1">+{c.edge}% · {c.hit}%</span>
           </li>
         ))}
       </ul>
@@ -296,7 +296,7 @@ function CategoryHeat() {
 
 function FollowedActivity() {
   return (
-    <div className="hairline rounded-2xl bg-white p-4">
+    <div className="hairline rounded-2xl bg-carbon p-4">
       <div className="flex items-center justify-between mb-3">
         <Eyebrow>Followed traders · live</Eyebrow>
         <Link to="/app/social" className="text-[12px] text-cerulean font-semibold">Hub →</Link>
@@ -306,8 +306,8 @@ function FollowedActivity() {
           <li key={t.name} className="flex items-center gap-2 text-[12px]">
             <span className="h-7 w-7 rounded-full bg-ink text-white grid place-items-center text-[10px] font-semibold">{t.name.slice(0,2).toUpperCase()}</span>
             <div className="min-w-0 flex-1">
-              <div className="font-semibold truncate">@{t.name} <span className="text-slate2 font-normal">· {t.specialty}</span></div>
-              <div className="text-[10.5px] text-slate2">Took <span className="text-ink">OKC G5</span> · 4m ago · {t.tier}</div>
+              <div className="font-semibold truncate">@{t.name} <span className="text-slate1 font-normal">· {t.specialty}</span></div>
+              <div className="text-[10.5px] text-slate1">Took <span className="text-white">OKC G5</span> · 4m ago · {t.tier}</div>
             </div>
             <span className="chip green">+{t.roi}%</span>
           </li>
@@ -319,7 +319,7 @@ function FollowedActivity() {
 
 function ApexTeaser() {
   return (
-    <div className="rounded-2xl gold-frame bg-gradient-to-br from-[#fffaee] to-white p-4">
+    <div className="rounded-2xl gold-frame bg-gradient-to-br from-[#2A2418] to-carbon p-4">
       <div className="flex items-center gap-2">
         <QBadge size={22} />
         <div className="eyebrow text-[#7E5E22]">Apex · gated insight</div>
@@ -331,7 +331,7 @@ function ApexTeaser() {
         <li className="flex justify-between"><span className="truncate">Taylor Swift tour extension</span><span className="text-positive tnum">+13.0%</span></li>
       </ul>
       <Link to="/app/tiers" className="btn btn-gold btn-sm w-full mt-3 justify-center">Unlock Apex</Link>
-      <div className="text-[10.5px] text-slate2 mt-1.5 text-center">Performance-credit guarantee · see terms</div>
+      <div className="text-[10.5px] text-slate1 mt-1.5 text-center">Performance-credit guarantee · see terms</div>
     </div>
   );
 }
@@ -347,7 +347,7 @@ export function Dashboard() {
         <div>
           <Eyebrow>Welcome back</Eyebrow>
           <h1 className="font-display text-[32px] leading-tight tracking-tight">Good afternoon, Rémi.</h1>
-          <p className="text-[13px] text-slate2 mt-0.5">Markets are <span className="text-positive font-semibold">open</span>. 23 opportunities. 6 missed wins to review.</p>
+          <p className="text-[13px] text-slate1 mt-0.5">Markets are <span className="text-positive font-semibold">open</span>. 23 opportunities. 6 missed wins to review.</p>
         </div>
         <div className="hidden md:flex items-center gap-2">
           <Link to="/app/scanner" className="btn btn-cerulean btn-sm">Open Scanner</Link>

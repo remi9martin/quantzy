@@ -21,8 +21,8 @@ function Slider({ label, value, suffix = '%', onChange, min = 0, max = 100, step
   return (
     <div>
       <div className="flex items-center justify-between text-[11.5px]">
-        <span className="text-slate2">{label}</span>
-        <span className="tnum text-ink font-semibold">{value}{suffix}</span>
+        <span className="text-slate1">{label}</span>
+        <span className="tnum text-white font-semibold">{value}{suffix}</span>
       </div>
       <input
         type="range"
@@ -38,14 +38,14 @@ function Toggle({ label, checked, onChange, hint }) {
   return (
     <button
       onClick={() => onChange(!checked)}
-      className={`w-full flex items-center justify-between text-[12px] hairline rounded-md px-2 py-1.5 ${checked ? 'bg-cerulean/8 border-cerulean/40' : 'bg-white'}`}
+      className={`w-full flex items-center justify-between text-[12px] hairline rounded-md px-2 py-1.5 ${checked ? 'bg-cerulean/15 border-cerulean/40' : 'bg-carbon'}`}
     >
       <span className="text-left">
-        <span className="block text-ink">{label}</span>
-        {hint && <span className="block text-[10px] text-slate2">{hint}</span>}
+        <span className="block text-white">{label}</span>
+        {hint && <span className="block text-[10px] text-slate1">{hint}</span>}
       </span>
-      <span className={`w-7 h-4 rounded-full p-0.5 ${checked ? 'bg-cerulean' : 'bg-haze'}`}>
-        <span className={`block h-3 w-3 rounded-full bg-white transition-transform ${checked ? 'translate-x-3' : ''}`} />
+      <span className={`w-7 h-4 rounded-full p-0.5 ${checked ? 'bg-cerulean' : 'bg-white/10'}`}>
+        <span className={`block h-3 w-3 rounded-full bg-carbon transition-transform ${checked ? 'translate-x-3' : ''}`} />
       </span>
     </button>
   );
@@ -53,13 +53,13 @@ function Toggle({ label, checked, onChange, hint }) {
 
 function ScannerLeftRail({ filters, setFilters }) {
   return (
-    <aside className="hidden lg:block w-64 shrink-0 border-r border-mist bg-white/60 backdrop-blur-sm">
+    <aside className="hidden lg:block w-64 shrink-0 border-r border-white/10 bg-carbon/60 backdrop-blur-sm">
       <div className="px-4 py-4 space-y-5 sticky top-[88px] max-h-[calc(100vh-88px)] overflow-y-auto">
         <FilterGroup label="Topic universe">
           <select
             value={filters.topic}
             onChange={(e) => setFilters({ ...filters, topic: e.target.value })}
-            className="w-full bg-white hairline rounded-md text-[12.5px] px-2 h-8"
+            className="w-full bg-carbon hairline rounded-md text-[12.5px] px-2 h-8"
           >
             {TOPICS.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
           </select>
@@ -87,12 +87,12 @@ function ScannerLeftRail({ filters, setFilters }) {
         </FilterGroup>
 
         <FilterGroup label="Risk mode">
-          <div className="inline-flex hairline rounded-md p-0.5 bg-platinum w-full">
+          <div className="inline-flex hairline rounded-md p-0.5 bg-onyx w-full">
             {['Cons','Bal','Aggr','Degen'].map((m, i) => (
               <button
                 key={m}
                 onClick={() => setFilters({ ...filters, risk: m })}
-                className={`flex-1 text-[11px] h-7 rounded ${filters.risk === m ? 'bg-white shadow-card text-ink font-semibold' : 'text-slate2'}`}
+                className={`flex-1 text-[11px] h-7 rounded ${filters.risk === m ? 'bg-carbon shadow-card text-white font-semibold' : 'text-slate1'}`}
               >{m}</button>
             ))}
           </div>
@@ -127,10 +127,10 @@ function InspectorBody({ leaf }) {
         </div>
         <div>
           <div className="text-[14.5px] font-semibold leading-tight">{leaf.label}</div>
-          <div className="text-[11px] text-slate2 mt-0.5">Resolution · estimated June 2024 · clean rules</div>
+          <div className="text-[11px] text-slate1 mt-0.5">Resolution · estimated June 2024 · clean rules</div>
         </div>
 
-        <div className="hairline rounded-lg bg-platinum/40 p-3">
+        <div className="hairline rounded-lg bg-white/5 p-3">
           <div className="grid grid-cols-3 gap-2 text-center">
             <div><div className="eyebrow">Market</div><div className="font-semibold tnum">{leaf.mp}¢</div></div>
             <div><div className="eyebrow">Fair</div><div className="font-semibold tnum text-cerulean">{leaf.fp}¢</div></div>
@@ -142,10 +142,10 @@ function InspectorBody({ leaf }) {
         <div>
           <div className="eyebrow mb-1">Confidence</div>
           <ConfBand value={leaf.conf} />
-          <div className="flex items-center justify-between text-[10.5px] text-slate2 mt-1 tnum">
+          <div className="flex items-center justify-between text-[10.5px] text-slate1 mt-1 tnum">
             <span>{lo}%</span><span className="text-cerulean font-semibold">{leaf.conf}%</span><span>{hi}%</span>
           </div>
-          <div className="text-[11px] text-slate2 mt-1">In this band: 612 resolved · actual <span className="text-positive font-semibold">75.6%</span></div>
+          <div className="text-[11px] text-slate1 mt-1">In this band: 612 resolved · actual <span className="text-positive font-semibold">75.6%</span></div>
         </div>
 
         <div>
@@ -153,10 +153,10 @@ function InspectorBody({ leaf }) {
           {leaf.factors.map((f) => (
             <div key={f.k} className="mb-1.5">
               <div className="flex items-center justify-between text-[11px]">
-                <span className="text-slate2">{f.k}</span>
-                <span className="tnum text-ink font-semibold">{Math.round(f.v * 100)}</span>
+                <span className="text-slate1">{f.k}</span>
+                <span className="tnum text-white font-semibold">{Math.round(f.v * 100)}</span>
               </div>
-              <div className="h-1.5 bg-mist rounded">
+              <div className="h-1.5 bg-white/10 rounded">
                 <div className="h-1.5 rounded bg-cerulean" style={{ width: `${f.v * 100}%` }} />
               </div>
             </div>
@@ -165,27 +165,27 @@ function InspectorBody({ leaf }) {
 
         <div>
           <div className="eyebrow mb-1">Thesis</div>
-          <p className="text-[12px] leading-snug text-ink">{leaf.thesis}</p>
+          <p className="text-[12px] leading-snug text-white">{leaf.thesis}</p>
         </div>
 
-        <div className="hairline rounded-lg p-3 bg-platinum/40">
-          <div className="flex items-center justify-between text-[11px] text-slate2 mb-1.5">
+        <div className="hairline rounded-lg p-3 bg-white/5">
+          <div className="flex items-center justify-between text-[11px] text-slate1 mb-1.5">
             <span>Social overlay</span>
             <span className="tnum">{leaf.social}%</span>
           </div>
           <div className="flex -space-x-1.5">
             {TRADERS.slice(0, 5).map((t) => (
-              <span key={t.name} title={`@${t.name}`} className="h-6 w-6 rounded-full bg-ink text-white grid place-items-center text-[9px] font-semibold ring-2 ring-white">
+              <span key={t.name} title={`@${t.name}`} className="h-6 w-6 rounded-full bg-ink text-white grid place-items-center text-[9px] font-semibold ring-2 ring-carbon">
                 {t.name.slice(0,2).toUpperCase()}
               </span>
             ))}
           </div>
-          <div className="text-[11px] text-slate2 mt-1.5">12 entered · 3 skipping · 2 fading</div>
+          <div className="text-[11px] text-slate1 mt-1.5">12 entered · 3 skipping · 2 fading</div>
         </div>
 
         <div>
           <div className="eyebrow mb-1">Invalidation triggers</div>
-          <ul className="text-[11.5px] space-y-1 text-slate2">
+          <ul className="text-[11.5px] space-y-1 text-slate1">
             <li>• Price crosses 0.62 (model exit)</li>
             <li>• Liquidity collapses below $400k</li>
             <li>• Resolution rule challenged on venue</li>
@@ -207,17 +207,17 @@ function InspectorBody({ leaf }) {
 
 function InspectorEmpty() {
   return (
-    <div className="hairline rounded-lg bg-platinum/50 p-4 mt-2 text-center">
+    <div className="hairline rounded-lg bg-white/5 p-4 mt-2 text-center">
       <MascotMark size={36} className="mx-auto" />
       <div className="text-[13px] font-semibold mt-2">Pick a leaf</div>
-      <p className="text-[11.5px] text-slate2 mt-1">Tap any market node in the map to see its full thesis, factor breakdown, and social overlay.</p>
+      <p className="text-[11.5px] text-slate1 mt-1">Tap any market node in the map to see its full thesis, factor breakdown, and social overlay.</p>
     </div>
   );
 }
 
 function Inspector({ leaf }) {
   return (
-    <aside className="hidden lg:block w-[340px] shrink-0 border-l border-mist bg-white">
+    <aside className="hidden lg:block w-[340px] shrink-0 border-l border-white/10 bg-carbon">
       <div className="px-4 py-3 sticky top-[88px] max-h-[calc(100vh-88px)] overflow-y-auto">
         <div className="eyebrow mb-2">Opportunity inspector</div>
         {leaf ? <InspectorBody leaf={leaf} /> : <InspectorEmpty />}
@@ -239,15 +239,15 @@ function OpportunityMatrix() {
   const x = (v) => P + (v / xMax) * (W - P - 6);
   const y = (v) => H - P - (v / yMax) * (H - P - 12);
   return (
-    <div className="hairline rounded-xl bg-white p-3">
+    <div className="hairline rounded-xl bg-carbon p-3">
       <div className="flex items-center justify-between mb-2">
         <Eyebrow>Opportunity matrix</Eyebrow>
         <span className="chip cerulean">Edge × Conf · liquidity = bubble</span>
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
         <rect x={P} y={12} width={W - P - 6} height={H - P - 12} fill="rgba(37,99,235,0.05)" />
-        <line x1={P} y1={(H - P + 12) / 2} x2={W - 6} y2={(H - P + 12) / 2} stroke="rgba(11,13,16,0.08)" />
-        <line x1={(P + W - 6) / 2} y1={12} x2={(P + W - 6) / 2} y2={H - P} stroke="rgba(11,13,16,0.08)" />
+        <line x1={P} y1={(H - P + 12) / 2} x2={W - 6} y2={(H - P + 12) / 2} stroke="rgba(255,255,255,0.08)" />
+        <line x1={(P + W - 6) / 2} y1={12} x2={(P + W - 6) / 2} y2={H - P} stroke="rgba(255,255,255,0.08)" />
         <text x={W - 8} y={20} textAnchor="end" fontSize="9" fill="#9AA3AE">Alpha zone ↑</text>
         <text x={P + 4} y={H - P - 4} fontSize="9" fill="#9AA3AE">noise</text>
         {/* axes */}
@@ -270,9 +270,9 @@ function OpportunityMatrix() {
 
 function CalibCard() {
   return (
-    <div className="hairline rounded-xl bg-white p-3">
+    <div className="hairline rounded-xl bg-carbon p-3">
       <Eyebrow>Calibration · this band</Eyebrow>
-      <div className="text-[12px] text-slate2 mt-1">Model says <span className="text-ink font-semibold">75–85%</span>. Historical actual <span className="text-positive font-semibold">78.3%</span> over <span className="text-ink font-semibold">842</span> resolved samples.</div>
+      <div className="text-[12px] text-slate1 mt-1">Model says <span className="text-white font-semibold">75–85%</span>. Historical actual <span className="text-positive font-semibold">78.3%</span> over <span className="text-white font-semibold">842</span> resolved samples.</div>
       <div className="mt-3 grid grid-cols-2 gap-2">
         <div className="hairline rounded-md p-2"><div className="eyebrow">Brier</div><div className="font-semibold tnum">0.146</div></div>
         <div className="hairline rounded-md p-2"><div className="eyebrow">Slope</div><div className="font-semibold tnum">0.98</div></div>
@@ -285,9 +285,9 @@ function CalibCard() {
 
 function MissedCard() {
   return (
-    <div className="hairline rounded-xl bg-gradient-to-br from-[#fff7ec] to-white p-3">
+    <div className="hairline rounded-xl bg-gradient-to-br from-[#2A2418] to-carbon p-3">
       <Eyebrow>Missed edge · this topic</Eyebrow>
-      <div className="text-[12px] text-slate2 mt-1">You searched <span className="text-ink font-semibold">"Fed rates"</span> 11 days ago. Two markets later moved <span className="text-warn font-semibold">+31¢</span>.</div>
+      <div className="text-[12px] text-slate1 mt-1">You searched <span className="text-white font-semibold">"Fed rates"</span> 11 days ago. Two markets later moved <span className="text-warn font-semibold">+31¢</span>.</div>
       <ul className="mt-2 text-[11.5px] space-y-1">
         <li className="flex justify-between"><span>Fed cuts 25bps · June</span><span className="text-positive tnum">+$1,240</span></li>
         <li className="flex justify-between"><span>CPI &lt;3.2% · May</span><span className="text-positive tnum">+$870</span></li>
@@ -299,10 +299,10 @@ function MissedCard() {
 
 function TierTeaser() {
   return (
-    <div className="rounded-xl gold-frame bg-gradient-to-br from-[#fffaee] to-white p-3">
+    <div className="rounded-xl gold-frame bg-gradient-to-br from-[#2A2418] to-carbon p-3">
       <Eyebrow className="text-[#7E5E22]">Apex teaser</Eyebrow>
       <div className="text-[13px] font-semibold mt-1">Apex branch hidden in this topic</div>
-      <div className="text-[11px] text-slate2 mt-1">+14.2% edge · 82% confidence · $4.2M liquidity</div>
+      <div className="text-[11px] text-slate1 mt-1">+14.2% edge · 82% confidence · $4.2M liquidity</div>
       <div className="mt-2 grid grid-cols-3 gap-2">
         <div className="hairline rounded-md p-1.5 text-center"><div className="eyebrow">Edge</div><div className="font-semibold tnum text-positive">+14.2%</div></div>
         <div className="hairline rounded-md p-1.5 text-center"><div className="eyebrow">Conf</div><div className="font-semibold tnum">82%</div></div>
@@ -369,17 +369,17 @@ export function Scanner() {
               { k: 'Social heat',   v: 'High', t: 'cerulean' },
               { k: 'Catalyst window', v: '3d', t: 'ink' },
             ].map((x) => (
-              <div key={x.k} className="hairline rounded-lg bg-white p-2.5">
+              <div key={x.k} className="hairline rounded-lg bg-carbon p-2.5">
                 <div className="eyebrow">{x.k}</div>
-                <div className={`mt-0.5 text-[16px] font-semibold tnum ${x.t === 'positive' ? 'text-positive' : x.t === 'gold' ? 'text-[#7E5E22]' : x.t === 'cerulean' ? 'text-cerulean' : 'text-ink'}`}>{x.v}</div>
+                <div className={`mt-0.5 text-[16px] font-semibold tnum ${x.t === 'positive' ? 'text-positive' : x.t === 'gold' ? 'text-[#7E5E22]' : x.t === 'cerulean' ? 'text-cerulean' : 'text-white'}`}>{x.v}</div>
               </div>
             ))}
           </div>
 
           {/* Map / view */}
-          <div className="hairline rounded-2xl bg-white relative overflow-hidden shadow-card">
-            <div className="flex items-center justify-between px-3 py-2 border-b border-mist">
-              <div className="flex items-center gap-2 text-[11px] text-slate2">
+          <div className="hairline rounded-2xl bg-carbon relative overflow-hidden shadow-card">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-white/10">
+              <div className="flex items-center gap-2 text-[11px] text-slate1">
                 <PulseDot tone="green" /><span>Live · 14:02 UTC</span>
                 <span className="chip">Edge ≥ {filters.edge}%</span>
                 <span className="chip">Conf ≥ {filters.conf}%</span>
@@ -428,7 +428,7 @@ function ScannerFiltersInner({ filters, setFilters }) {
         <select
           value={filters.topic}
           onChange={(e) => setFilters({ ...filters, topic: e.target.value })}
-          className="w-full bg-white hairline rounded-md text-[13px] px-2 h-9"
+          className="w-full bg-carbon hairline rounded-md text-[13px] px-2 h-9"
         >
           {TOPICS.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
         </select>
@@ -440,12 +440,12 @@ function ScannerFiltersInner({ filters, setFilters }) {
         <Slider label="Time ≤"        value={filters.time}     onChange={(v) => setFilters({ ...filters, time: v })} suffix="d" max={365} />
       </FilterGroup>
       <FilterGroup label="Risk mode">
-        <div className="inline-flex hairline rounded-md p-0.5 bg-platinum w-full">
+        <div className="inline-flex hairline rounded-md p-0.5 bg-onyx w-full">
           {['Cons','Bal','Aggr','Degen'].map((m) => (
             <button
               key={m}
               onClick={() => setFilters({ ...filters, risk: m })}
-              className={`flex-1 text-[12px] h-8 rounded ${filters.risk === m ? 'bg-white shadow-card text-ink font-semibold' : 'text-slate2'}`}
+              className={`flex-1 text-[12px] h-8 rounded ${filters.risk === m ? 'bg-carbon shadow-card text-white font-semibold' : 'text-slate1'}`}
             >{m}</button>
           ))}
         </div>
@@ -548,7 +548,7 @@ function HeatmapView() {
           </>
         ))}
       </div>
-      <div className="text-[11px] text-slate2 mt-3">Click any cell to expand into ranked market cards.</div>
+      <div className="text-[11px] text-slate1 mt-3">Click any cell to expand into ranked market cards.</div>
     </div>
   );
 }
@@ -559,7 +559,7 @@ function TableView({ onSelect }) {
       <div className="overflow-x-auto">
         <table className="w-full text-[12px]">
           <thead>
-            <tr className="text-left text-slate2">
+            <tr className="text-left text-slate1">
               <th className="py-1.5 px-2">Market</th>
               <th>Topic</th>
               <th>Edge</th>
@@ -573,10 +573,10 @@ function TableView({ onSelect }) {
           </thead>
           <tbody>
             {SIGNALS.map((s) => (
-              <tr key={s.id} className="border-t border-mist hover:bg-platinum/40 cursor-pointer"
+              <tr key={s.id} className="border-t border-white/10 hover:bg-white/5 cursor-pointer"
                 onClick={() => onSelect?.({ id: s.id, label: s.market, mp: s.marketPct, fp: s.fairPct, edge: s.edgePct, conf: s.confidence, liq: s.liquidity, social: s.socialConv, tier: s.tier, factors: [{ k: 'Polling', v: 0.6 }, { k: 'Catalyst', v: 0.5 }], thesis: s.thesis, status: s.status })}>
                 <td className="py-1.5 px-2 truncate max-w-[260px]">{s.market}</td>
-                <td className="text-slate2">{s.subtopic}</td>
+                <td className="text-slate1">{s.subtopic}</td>
                 <td className="text-positive font-semibold tnum">+{s.edgePct}%</td>
                 <td className="tnum">{s.confidence}%</td>
                 <td className="tnum">{s.liquidity}</td>
